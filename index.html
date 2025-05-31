@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Toko Riki Shop Real</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<header>
+<div class="header-left">
+<button class="icon-btn hamburger-btn" id="hamburgerBtn" aria-label="Buka Menu">&#9776;</button>
+</div>
+<h1>PRODUK YT : RIKI SHOP</h1>
+<div class="header-right">
+<button class="icon-btn header-cart-icon" id="headerCartIcon" aria-label="Keranjang Belanja">
+🛒
+<span id="headerCartItemCount">0</span>
+</button>
+</div>
+</header>
+
+<div id="sideNav" class="sidenav">
+<div class="sidenav-profile-header">
+<img src="image/profile.png" alt="Profil"> <div class="sidenav-profile-info">
+<h4>HALO KA 👋</h4>
+<p>Selamat Datang!</p>
+</div>
+ <button class="close-sidenav-btn" id="closeSidenavBtn" aria-label="Tutup Menu" style="position:absolute; top:10px; right:10px; color:#fff; background:transparent;">&times;</button>
+</div>
+<a href="javascript:void(0)" id="menuBeranda" class="sidenav-item"><span class="icon">🏠</span> Beranda</a>
+<a href="javascript:void(0)" id="menuTentangKami" class="sidenav-item"><span class="icon">ℹ️</span> Tentang Kami</a>
+<a href="javascript:void(0)" id="menuChatAI" class="sidenav-item"><span class="icon">🤖</span> Chat AI (Beta)</a>
+<a href="javascript:void(0)" id="menuChatSeller" class="sidenav-item"><span class="icon">💬</span> Chat Seller</a>
+</div>
+<div id="page-overlay"></div>
+
+<div id="tentangKamiModal" class="modal tentang-kami-modal">
+<div class="modal-content">
+<div class="modal-header">
+<h2>Tentang Toko Riki Shop</h2>
+<button class="close-btn" id="closeTentangKamiModalBtn" aria-label="Tutup">&times;</button>
+</div>
+<div class="modal-body-content">
+<p>Selamat datang di Toko Riki Shop Real! Kami berdedikasi untuk menyediakan produk-produk paling keren dan inovatif untuk Anda. Sejak didirikan pada tahun 2025, misi kami adalah memberikan pengalaman belanja online yang mudah, aman, dan menyenangkan.</p>
+<p>Kami percaya bahwa setiap pelanggan adalah raja, dan kami berusaha keras untuk melebihi ekspektasi Anda dengan layanan pelanggan yang responsif dan produk berkualitas tinggi. Jelajahi koleksi kami dan temukan item favorit Anda hari ini</p>
+<p>Website Kami masih dalam pengembangan Mohon maaf jika ada kekurangan tunggu saja update menarik dari kami!</p>
+<p>Terima kasih telah memilih kami.</p>
+</div>
+</div>
+</div>
+
+<div id="cartModal" class="modal cart-modal">
+<div class="modal-content">
+<div class="modal-header">
+<h2>Keranjang Belanja Anda</h2>
+<button class="close-btn" id="closeCartModalBtn" aria-label="Tutup">&times;</button>
+</div>
+<div class="modal-body-content" id="cartModalItemContainer"><p>Keranjang Anda kosong.</p></div>
+<div id="cartModalTotalContainer">Total: Rp <span id="cartModalTotalHarga">0</span></div>
+<div class="modal-footer">
+ <button id="cartModalCheckoutBtn" disabled>Checkout (WhatsApp)</button>
+</div>
+</div>
+</div>
+
+<div id="chatAiModal" class="modal chat-ai-modal">
+<div class="modal-content">
+<div class="modal-header">
+<h2>AI Assistant</h2>
+<button class="close-btn" id="closeChatAiModalBtn" aria-label="Tutup">&times;</button>
+</div>
+<div class="modal-body-content">
+<div class="chat-interface">
+<div class="chat-messages" id="chatAiMessages">
+<div class="message ai-message">Halo! Ada yang bisa saya bantu hari ini?</div>
+</div>
+<div id="chatAiLoading" class="chat-loading" style="display: none;">
+<div class="spinner"></div> AI sedang memproses...
+</div>
+<div class="chat-input-area">
+<textarea id="chatAiInput" placeholder="Ketik pertanyaan Anda..." rows="1"></textarea>
+<button id="sendChatAiBtn" aria-label="Kirim Pesan">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+<path d="M3.478 2.405a.75.75 0 00-.926.94l2.432 7.905H13.5a.75.75 0 010 1.5H4.984l-2.432 7.905a.75.75 0 00.926.94 60.519 60.519 0 0018.445-8.986.75.75 0 000-1.218A60.517 60.517 0 003.478 2.405z" fill="currentColor" />
+</svg>
+</button>
+</div>
+</div>
+ <p style="font-size:0.8em; text-align:center; margin-top:15px; color: var(--text-muted);">
+Menggunakan model AI placeholder. AI ini masih dalam pengembangan
+</p>
+</div>
+</div>
+</div>
+
+<main>
+<section class="banner-carousel" id="bannerCarousel">
+<div class="banner-slides" id="bannerSlides">
+<div class="banner-slide"><img src="image/banner1.jpg" alt="Promosi 1"></div>
+<div class="banner-slide"><img src="image/banner2.jpg" alt="Promosi 2"></div>
+<div class="banner-slide"><img src="image/banner3.jpg" alt="Promosi 3"></div>
+</div>
+<div class="banner-nav">
+<button id="prevBanner" aria-label="Previous Slide">&#10094;</button>
+<button id="nextBanner" aria-label="Next Slide">&#10095;</button>
+</div>
+<div class="banner-dots" id="bannerDots"></div>
+</section>
+
+<nav class="kategori-nav-wrapper">
+<div class="kategori-nav" id="kategoriNav"></div>
+</nav>
+
+<section class="kategori-slider-container">
+<div class="kategori-slides-wrapper" id="kategoriSlidesWrapper">
+<div id="kategori-slides"></div>
+</div>
+</section>
+</main>
+
+<div id="detail-modal" class="modal">
+<div class="modal-content">
+<div class="modal-header">
+<h2 id="modal-nama-produk-header">Nama Produk</h2>
+<button class="close-btn" id="close-modal-btn" aria-label="Tutup">&times;</button>
+</div>
+<div class="modal-body-content">
+<div class="modal-body"> 
+<div class="modal-image-container"> <img id="modal-img" src="" alt="Gambar Produk"> </div>
+<div class="modal-info-container">
+<p class="harga-modal" id="harga-modal-default">Rp <span id="modal-harga">0</span></p>
+<p class="deskripsi-panjang" id="modal-deskripsi">Deskripsi lengkap produk...</p>
+<div id="modal-variants-container"></div>
+</div>
+</div>
+</div>
+<div class="modal-footer">
+ <div class="modal-actions">
+<button id="modal-beli-whatsapp-btn" class="beli-whatsapp-btn" data-id="">Pesan Sekarang</button>
+<button id="modal-cara-bayar-btn" class="cara-bayar-btn">Cara Bayar</button>
+<button id="modal-tambah-keranjang-btn" data-id="">+ Keranjang</button>
+</div>
+</div>
+</div>
+</div>
+
+<div id="payment-info-popup" class="modal">
+<div class="modal-content">
+ <div class="modal-header">
+<h2>Instruksi Pembayaran</h2>
+<button class="close-btn" id="closePaymentInfoPopupBtn" aria-label="Tutup">&times;</button>
+</div>
+<div class="modal-body-content" style="text-align: center;">
+<p>Silakan pilih produk yang tersedia</p>
+<p>klik +Keranjang atau klik pesan Sekarang</p>
+<p>setelah itu bakal di arahkan ke WhatsApp</p>
+<p>setelahitu kirim pesan yang sudh tersedia</p>
+<p>setelah di kirim admin akan memeberikan paymet</p>
+<p>lalu kamu tf bawa bukti tf, admin memperoses</p>
+<p>jika sudah di memperoses tunggu admi send produk yang kamu pesan jika sudah di send tinggal katakan done. dan pesanan mu selesai</p>
+</div>
+</div>
+</div>
+
+<footer>
+<p>&copy; <span id="tahun-sekarang"></span> Toko Host - Powered Riki Shop Real</p>
+</footer>
+
+<script src="kistore.js"></script>
+</body>
+</html>
